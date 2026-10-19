@@ -1,50 +1,37 @@
-# KRU | Illustrative Product Brief
+# KRU · Product brief
 
-> A sanitized product management example informed by the project. It is not an assertion that this exact document was used as the original implementation specification.
+Requirements and journeys below are reconstructed from the implemented application and its private product documentation, reviewed October 18, 2026.
 
-## Opportunity
+## Problem and product hypothesis
 
-Users practicing Muay Thai alone often lack a simple sequence that links learning, practice, and improvement. A structured digital companion could reduce ambiguity at the start of a session.
+Solo Muay Thai practice is fragmented across instructional videos, timers, and general advice. Connecting a short learning sequence to a playable session can reduce the planning required to begin practice. Whether this improves retention still requires learner validation.
 
-## Objectives
+## Core journeys and acceptance criteria
 
-1. Reduce friction between opening the product and beginning a session.
-2. Provide useful guidance without pretending a camera or AI model is a human coach.
-3. Make it easy to repeat a session and track completion.
+| User need | Journey | Acceptance criteria reflected in the product |
+| :--- | :--- | :--- |
+| Learn a fundamental | Choose a lesson, read the movement breakdown, continue to practice | The stages are explicit; stance and technique cues remain visible; the learner can return to the curriculum. |
+| Work through a session | Select a program, start rounds, pause or resume, finish | Work and rest states are distinct; session controls are understandable; audio can be disabled. |
+| Learn from a video | Enter a public YouTube link, choose a scan, process, review output | Invalid links are rejected; Shorts are recognized; processing has a failure path; identified moments and practice suggestions are structured. |
+| Receive coaching | Ask a training question or request a combination | The request retains context; errors permit retry; the coach does not claim to have watched the user in text chat. |
+| Train from a fighter’s style | Search, resolve identity, set training preferences, review a program | Fighter identity is checked; unsupported facts are left unknown; a fallback is labeled as an archetype rather than fighter analysis. |
+| Use camera feedback | Choose supported tracking, grant permission, practice slowly | Permission and detection states are handled; feedback does not claim a complete technique assessment or medical accuracy. |
 
-## Primary user story
+These criteria describe intended behavior and existing controls. Release verification is tracked separately in the [QA record](EVALUATION_AND_RELEASE.md).
 
-As a solo practitioner, I want a guided round with technique prompts and a clear timer so that I can practice without planning every exercise myself.
+## Prioritization rationale
 
-### Acceptance criteria
+| Priority | Product work | Why it comes first |
+| :--- | :--- | :--- |
+| Core training value | Fundamentals, guided rounds, session controls | A learner should be able to practice without waiting for advanced AI. |
+| Trust and recovery | Verified fighter identity, honest fallbacks, valid output, clear errors | Incorrect certainty damages both the session and confidence in the product. |
+| Reliable AI workflows | Coaching, video interpretation, provider limits, caching | Useful output must remain responsive and financially sustainable. |
+| Progression depth | Longer programs and future progression features | Expand after the core experience and release gates are reliable. |
 
-- A user can select an available practice type and start a timed session.
-- Pause, resume, reset, and completion states are understandable and usable on mobile.
-- Audio can be muted or disabled without blocking practice.
-- If camera or AI functionality is unavailable, the interface clearly states what remains usable.
-- No scoring or feedback claims unsupported precision.
+## Scope boundaries
 
-## Secondary user story
+The application supports educational solo practice. Injury diagnosis, training clearance, guaranteed fitness outcomes, and precise grading of an entire fighter style are outside the product promise. The roadmap does not treat those boundaries as unfinished features.
 
-As a learner, I want to submit a supported instructional video and receive a practice-oriented summary so that I can turn passive viewing into a concrete session.
+## Measures for future validation
 
-### Acceptance criteria
-
-- Invalid or unsupported links receive a helpful error.
-- The workflow distinguishes submission, processing, result, and failure states.
-- The system avoids claims about movements it cannot reliably identify.
-- The user can review the summary before choosing to practice.
-
-## Non-goals for the first release
-
-- Medical or injury diagnosis.
-- Certifying safe technique or guaranteeing fitness outcomes.
-- Presenting estimated pose measurements as clinical-grade biomechanics.
-- Automatically trusting unverifiable fighter data.
-
-## Proposed metrics
-
-Activation: users starting a first practice session.  
-Engagement: completed sessions per weekly active learner.  
-Quality: share of AI interactions rated useful; failure or retry rate.  
-Economics: median third-party model cost per completed AI-assisted session.
+First session completion, return to practice, video completion and retry rates, coaching usefulness, and cost per successful assisted session are appropriate next measurements. No user growth, retention improvement, or revenue result has been verified for this case study.
